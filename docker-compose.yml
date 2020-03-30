@@ -1,0 +1,29 @@
+version: "3"
+services:
+  mysql:
+    build:
+      context: ./mysql
+      args:
+        - MYSQL_VERSION=5.7.27
+    environment:
+      - MYSQL_DATABASE=DimolUa
+      - MYSQL_USER=default
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql/db:/var/lib/mysql:rw
+    ports:
+      - "3306:3306"
+
+  rabbit1:
+    build:
+      context: ./rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "15674:15674"
+      - "1883:1883"
+
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
