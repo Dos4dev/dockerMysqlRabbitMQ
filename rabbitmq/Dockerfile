@@ -13,7 +13,8 @@ RUN chmod u+rw /etc/rabbitmq/rabbitmq.config \
 && rabbitmq-plugins enable rabbitmq_web_stomp \
 && rabbitmq-plugins enable rabbitmq_mqtt \
 && rabbitmq-plugins enable rabbitmq_tracing \
-&& rabbitmq-plugins enable rabbitmq_shovel rabbitmq_shovel_management
+&& rabbitmq-plugins enable rabbitmq_shovel rabbitmq_shovel_management \
+&& rabbitmq-plugins enable rabbitmqctl trace_on
 
 EXPOSE 5672
 EXPOSE 15672
